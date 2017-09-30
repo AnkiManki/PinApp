@@ -4,7 +4,7 @@
 //
 //  Created by Stefan Markovic on 9/29/17.
 //  Copyright © 2017 Stefan Markovic. All rights reserved.
-// Strana 159
+// Strana 196
 
 import UIKit
 
@@ -55,14 +55,17 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             alertMessage.addAction(alertAction)
             self.present(alertMessage, animated: true, completion: nil)
         }
-        let checkInAction = UIAlertAction(title: "Check-In", style: .default) { (action) in
+        
+        let checkInTitle = restaurantIsVisited[indexPath.row] ? "Undo Check in" : "Check in"
+        let checkInAction = UIAlertAction(title: checkInTitle, style: .default) { (action) in
             
             let cell = tableView.cellForRow(at: indexPath)
-            cell?.accessoryType = .checkmark
-            self.restaurantIsVisited[indexPath.row] = true
+            self.restaurantIsVisited[indexPath.row] = self.restaurantIsVisited[indexPath.row] ? false : true
+            cell?.accessoryType = self.restaurantIsVisited[indexPath.row] ? .checkmark : .none
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
         
         alert.addAction(callAction)
         alert.addAction(checkInAction)
