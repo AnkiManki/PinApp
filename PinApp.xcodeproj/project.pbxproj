@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D3645BE1F7FF4DA002B77F6 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3645BD1F7FF4DA002B77F6 /* RestaurantCell.swift */; };
 		9D551EA81F7E8C60002BC5F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D551EA71F7E8C60002BC5F2 /* AppDelegate.swift */; };
 		9D551EAA1F7E8C60002BC5F2 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D551EA91F7E8C60002BC5F2 /* MainVC.swift */; };
 		9D551EAD1F7E8C60002BC5F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D551EAB1F7E8C60002BC5F2 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D3645BD1F7FF4DA002B77F6 /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		9D551EA41F7E8C60002BC5F2 /* PinApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D551EA71F7E8C60002BC5F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D551EA91F7E8C60002BC5F2 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				9D551EA91F7E8C60002BC5F2 /* MainVC.swift */,
+				9D3645BD1F7FF4DA002B77F6 /* RestaurantCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D3645BE1F7FF4DA002B77F6 /* RestaurantCell.swift in Sources */,
 				9D551EAA1F7E8C60002BC5F2 /* MainVC.swift in Sources */,
 				9D551EA81F7E8C60002BC5F2 /* AppDelegate.swift in Sources */,
 			);

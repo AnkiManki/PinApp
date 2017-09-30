@@ -4,7 +4,7 @@
 //
 //  Created by Stefan Markovic on 9/29/17.
 //  Copyright © 2017 Stefan Markovic. All rights reserved.
-//
+// Strana 159
 
 import UIKit
 
@@ -26,9 +26,11 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = restaurantNames[indexPath.row]
-        cell.imageView?.image = UIImage(named: restaurantImages[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RestaurantCell
+//        cell.textLabel?.text = restaurantNames[indexPath.row]
+//        cell.imageView?.image = UIImage(named: restaurantImages[indexPath.row])
+        cell.nameLabel.text = restaurantNames[indexPath.row]
+        cell.thumbnailImageView.image = UIImage(named: restaurantImages[indexPath.row])
         return cell
     }
 
