@@ -15,5 +15,5 @@ struct Restaurant {
     var location = ""
     var image = ""
     var isVisited = false
-    
+    var phone = ""
 }

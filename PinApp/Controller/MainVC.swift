@@ -4,7 +4,7 @@
 //
 //  Created by Stefan Markovic on 9/29/17.
 //  Copyright © 2017 Stefan Markovic. All rights reserved.
-// Strana 196
+// Strana 273
 
 import UIKit
 
@@ -14,30 +14,54 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var myTableView: UITableView!
     
 
-    var restaurants:[Restaurant] = [ Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Hong Kong", image: "cafedeadend.jpg", isVisited: false), Restaurant(name: "Homei", type: "Cafe", location: "Hong Kong", image: "homei.jpg", isVisited: false), Restaurant(name: "Teakha", type: "Tea House", location: "Hong Kong", image: "teakha.jpg", isVisited: false), Restaurant(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong", image: "cafeloisl.jpg", isVisited: false), Restaurant(name: "Petite Oyster", type: "French", location: "Hong Kong", image: "petiteoyster.jpg", isVisited: false), Restaurant(name: "For Kee Restaurant", type: "Bakery", location: "Hong Kong", image: "forkeerestaurant.jpg", isVisited: false), Restaurant(name: "Po's Atelier", type: "Bakery", location: "Hong Kong", image: "posatelier.jpg", isVisited: false), Restaurant(name: "Bourke Street Backery", type: "Chocolate", location: "Sydney", image: "bourkestreetbakery.jpg", isVisited: false), Restaurant(name: "Haigh's Chocolate", type: "Cafe", location: "Sydney", image: "haighschocolate.jpg", isVisited: false), Restaurant(name: "Palomino Espresso", type: "American / Seafood", location: "Sydney", image: "palominoespresso.jpg", isVisited: false), Restaurant(name: "Upstate", type: "American", location: "New York", image: "upstate.jpg", isVisited: false), Restaurant(name: "Traif", type: "American", location: "New York", image: "traif.jpg", isVisited: false), Restaurant(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "New York", image: "grahamavenuemeats.jpg", isVisited: false), Restaurant(name: "Waffle & Wolf", type: "Coffee & Tea", location: "New York", image: "wafflewolf.jpg", isVisited: false), Restaurant(name: "Five Leaves", type: "Coffee & Tea", location: "New York", image: "fiveleaves.jpg", isVisited: false), Restaurant(name: "Cafe Lore", type: "Latin American", location: "New York", image: "cafelore.jpg", isVisited: false), Restaurant(name: "Confessional", type: "Spanish", location: "New York", image: "confessional.jpg", isVisited: false), Restaurant(name: "Barrafina", type: "Spanish", location: "London", image: "barrafina.jpg", isVisited: false), Restaurant(name: "Donostia", type: "Spanish", location: "London", image: "donostia.jpg", isVisited: false), Restaurant(name: "Royal Oak", type: "British", location: "London", image: "royaloak.jpg", isVisited: false), Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "London", image: "caskpubkitchen.jpg", isVisited: false)
+    var restaurants: [Restaurant] = [
+        Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Hong Kong", image: "cafedeadend.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Homei", type: "Cafe", location: "Hong Kong", image: "homei.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Teakha", type: "Tea House", location: "Hong Kong", image: "teakha.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong", image: "cafeloisl.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Petite Oyster", type: "French", location: "Hong Kong", image: "petiteoyster.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "For Kee Restaurant", type: "Bakery", location: "Hong Kong", image: "forkeerestaurant.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Po's Atelier", type: "Bakery", location: "Hong Kong", image: "posatelier.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Bourke Street Backery", type: "Chocolate", location: "Sydney", image: "bourkestreetbakery.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Haigh's Chocolate", type: "Cafe", location: "Sydney", image: "haighschocolate.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Palomino Espresso", type: "American / Seafood", location: "Sydney", image: "palominoespresso.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Upstate", type: "American", location: "New York", image: "upstate.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Traif", type: "American", location: "New York", image: "traif.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "New York", image: "grahamavenuemeats.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Waffle & Wolf", type: "Coffee & Tea", location: "New York", image: "wafflewolf.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Five Leaves", type: "Coffee & Tea", location: "New York", image: "fiveleaves.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Cafe Lore", type: "Latin American", location: "New York", image: "cafelore.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Confessional", type: "Spanish", location: "New York", image: "confessional.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Barrafina", type: "Spanish", location: "London", image: "barrafina.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Donostia", type: "Spanish", location: "London", image: "donostia.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Royal Oak", type: "British", location: "London", image: "royaloak.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "London", image: "caskpubkitchen.jpg", isVisited: false, phone: "070 123 456")
         ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
     }
+
     
     //MARK: - TableViews
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurantNames.count
+        return restaurants.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RestaurantCell
-        cell.nameLabel.text = restaurantNames[indexPath.row]
-        cell.locationLabel.text = restaurantLocations[indexPath.row]
-        cell.typeLabel.text = restaurantTypes[indexPath.row]
-        cell.thumbnailImageView.image = UIImage(named: restaurantImages[indexPath.row])
+        cell.nameLabel.text = restaurants[indexPath.row].name
+        cell.locationLabel.text = restaurants[indexPath.row].location
+        cell.typeLabel.text = restaurants[indexPath.row].type
+        cell.thumbnailImageView.image = UIImage(named: restaurants[indexPath.row].image)
+        
         cell.thumbnailImageView.layer.cornerRadius = 30
         cell.thumbnailImageView.clipsToBounds = true
         
-        cell.accessoryType = restaurantIsVisited[indexPath.row] ? .checkmark : .none
+        cell.accessoryType = restaurants[indexPath.row].isVisited ? .checkmark : .none
         
         return cell
     }
@@ -75,11 +99,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - Share and Delete Swipe Actions
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            restaurantNames.remove(at: indexPath.row)
-            restaurantLocations.remove(at: indexPath.row)
-            restaurantTypes.remove(at: indexPath.row)
-            restaurantIsVisited.remove(at: indexPath.row)
-            restaurantImages.remove(at: indexPath.row)
+            restaurants.remove(at: indexPath.row)
         }
         myTableView.deleteRows(at: [indexPath], with: .fade)
     }
@@ -89,9 +109,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         //Social sharing
         let shareAction = UITableViewRowAction(style: .default, title: "Share") { (action, indexPath) in
             
-            let defaultText = "Just checking in at  \(self.restaurantNames[indexPath.row])"
+            let defaultText = "Just checking in at  \(self.restaurants[indexPath.row].name)"
             
-            if let imageToShare = UIImage(named: self.restaurantImages[indexPath.row]) {
+            if let imageToShare = UIImage(named: self.restaurants[indexPath.row].image) {
                 let activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
                 self.present(activityController, animated: true, completion: nil)
             }
@@ -100,13 +120,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         //Delete Button
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
-            
-            self.restaurantNames.remove(at: indexPath.row)
-            self.restaurantLocations.remove(at: indexPath.row)
-            self.restaurantTypes.remove(at: indexPath.row)
-            self.restaurantIsVisited.remove(at: indexPath.row)
-            self.restaurantImages.remove(at: indexPath.row)
-            
+            self.restaurants.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         shareAction.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
@@ -119,7 +133,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "ShowDetailView" {
             if let indexPath = myTableView.indexPathForSelectedRow {
                 let destinationVC = segue.destination as! RestaurantDetailVC
-                destinationVC.restaurantImage = restaurantImages[indexPath.row]
+                destinationVC.restaurant = restaurants[indexPath.row]
             }
         }
     }
