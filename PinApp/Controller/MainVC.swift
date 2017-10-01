@@ -9,16 +9,13 @@
 import UIKit
 
 class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     
-    var restaurantNames = ["Cafe Deadend", "Homei", "Teakha", "Cafe Loisl", "Petite Oyster", "For Kee Restaurant", "Po's Atelier", "Bourke Street Bakery", "Haigh's Chocolate", "Palomino Espresso", "Upstate", "Traif", "Graham Avenue Meats And Deli", "Waffle & Wolf", "Five Leaves", "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak", "CASK Pub and Kitchen"]
+    @IBOutlet weak var myTableView: UITableView!
     
-    var restaurantImages = ["cafedeadend.jpg", "homei.jpg", "teakha.jpg", "cafeloisl.jpg", "petiteoyster.jpg", "forkeerestaurant.jpg", "posatelier.jpg", "bourkestreetbakery.jpg", "haighschocolate.jpg", "palominoespresso.jpg", "upstate.jpg", "traif.jpg", "grahamavenuemeats.jpg", "wafflewolf.jpg", "fiveleaves.jpg", "cafelore.jpg", "confessional.jpg", "barrafina.jpg", "donostia.jpg", "royaloak.jpg", "caskpubkitchen.jpg"]
-    
-    var restaurantLocations = ["Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Sydney", "Sydney", "Sydney", "New York", "New York", "New York", "New York", "New York", "New York", "New York", "London", "London", "London", "London"]
-    
-    var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian / Causual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
-    
-    var restaurantIsVisited = Array(repeating: false, count: 21)
+
+    var restaurants:[Restaurant] = [ Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Hong Kong", image: "cafedeadend.jpg", isVisited: false), Restaurant(name: "Homei", type: "Cafe", location: "Hong Kong", image: "homei.jpg", isVisited: false), Restaurant(name: "Teakha", type: "Tea House", location: "Hong Kong", image: "teakha.jpg", isVisited: false), Restaurant(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong", image: "cafeloisl.jpg", isVisited: false), Restaurant(name: "Petite Oyster", type: "French", location: "Hong Kong", image: "petiteoyster.jpg", isVisited: false), Restaurant(name: "For Kee Restaurant", type: "Bakery", location: "Hong Kong", image: "forkeerestaurant.jpg", isVisited: false), Restaurant(name: "Po's Atelier", type: "Bakery", location: "Hong Kong", image: "posatelier.jpg", isVisited: false), Restaurant(name: "Bourke Street Backery", type: "Chocolate", location: "Sydney", image: "bourkestreetbakery.jpg", isVisited: false), Restaurant(name: "Haigh's Chocolate", type: "Cafe", location: "Sydney", image: "haighschocolate.jpg", isVisited: false), Restaurant(name: "Palomino Espresso", type: "American / Seafood", location: "Sydney", image: "palominoespresso.jpg", isVisited: false), Restaurant(name: "Upstate", type: "American", location: "New York", image: "upstate.jpg", isVisited: false), Restaurant(name: "Traif", type: "American", location: "New York", image: "traif.jpg", isVisited: false), Restaurant(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "New York", image: "grahamavenuemeats.jpg", isVisited: false), Restaurant(name: "Waffle & Wolf", type: "Coffee & Tea", location: "New York", image: "wafflewolf.jpg", isVisited: false), Restaurant(name: "Five Leaves", type: "Coffee & Tea", location: "New York", image: "fiveleaves.jpg", isVisited: false), Restaurant(name: "Cafe Lore", type: "Latin American", location: "New York", image: "cafelore.jpg", isVisited: false), Restaurant(name: "Confessional", type: "Spanish", location: "New York", image: "confessional.jpg", isVisited: false), Restaurant(name: "Barrafina", type: "Spanish", location: "London", image: "barrafina.jpg", isVisited: false), Restaurant(name: "Donostia", type: "Spanish", location: "London", image: "donostia.jpg", isVisited: false), Restaurant(name: "Royal Oak", type: "British", location: "London", image: "royaloak.jpg", isVisited: false), Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "London", image: "caskpubkitchen.jpg", isVisited: false)
+        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +29,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RestaurantCell
+        let cell = myTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RestaurantCell
         cell.nameLabel.text = restaurantNames[indexPath.row]
         cell.locationLabel.text = restaurantLocations[indexPath.row]
         cell.typeLabel.text = restaurantTypes[indexPath.row]
@@ -46,37 +43,36 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     //MARK: - Alert actions
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let alert = UIAlertController(title: nil, message: "What do you want to do?" , preferredStyle: .actionSheet)
-        let callAction = UIAlertAction(title: "Call " + "123-000-\(indexPath.row)", style: .default) { (action) in
-            
-            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertMessage.addAction(alertAction)
-            self.present(alertMessage, animated: true, completion: nil)
-        }
-        
-        let checkInTitle = restaurantIsVisited[indexPath.row] ? "Undo Check in" : "Check in"
-        let checkInAction = UIAlertAction(title: checkInTitle, style: .default) { (action) in
-            
-            let cell = tableView.cellForRow(at: indexPath)
-            self.restaurantIsVisited[indexPath.row] = self.restaurantIsVisited[indexPath.row] ? false : true
-            cell?.accessoryType = self.restaurantIsVisited[indexPath.row] ? .checkmark : .none
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
-        alert.addAction(callAction)
-        alert.addAction(checkInAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
-        tableView.deselectRow(at: indexPath, animated: false)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        let alert = UIAlertController(title: nil, message: "What do you want to do?" , preferredStyle: .actionSheet)
+//        let callAction = UIAlertAction(title: "Call " + "123-000-\(indexPath.row)", style: .default) { (action) in
+//
+//            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
+//            let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//            alertMessage.addAction(alertAction)
+//            self.present(alertMessage, animated: true, completion: nil)
+//        }
+//
+//        let checkInTitle = restaurantIsVisited[indexPath.row] ? "Undo Check in" : "Check in"
+//        let checkInAction = UIAlertAction(title: checkInTitle, style: .default) { (action) in
+//
+//            let cell = tableView.cellForRow(at: indexPath)
+//            self.restaurantIsVisited[indexPath.row] = self.restaurantIsVisited[indexPath.row] ? false : true
+//            cell?.accessoryType = self.restaurantIsVisited[indexPath.row] ? .checkmark : .none
+//        }
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//
+//        alert.addAction(callAction)
+//        alert.addAction(checkInAction)
+//        alert.addAction(cancelAction)
+//
+//        present(alert, animated: true, completion: nil)
+//        tableView.deselectRow(at: indexPath, animated: false)
+//    }
     
-    //MARK: - Editing styles
-    
+    //MARK: - Share and Delete Swipe Actions
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             restaurantNames.remove(at: indexPath.row)
@@ -85,7 +81,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             restaurantIsVisited.remove(at: indexPath.row)
             restaurantImages.remove(at: indexPath.row)
         }
-        tableView.deleteRows(at: [indexPath], with: .fade)
+        myTableView.deleteRows(at: [indexPath], with: .fade)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -119,6 +115,14 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return [deleteAction, shareAction]
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailView" {
+            if let indexPath = myTableView.indexPathForSelectedRow {
+                let destinationVC = segue.destination as! RestaurantDetailVC
+                destinationVC.restaurantImage = restaurantImages[indexPath.row]
+            }
+        }
+    }
 
     
     
