@@ -4,7 +4,7 @@
 //
 //  Created by Stefan Markovic on 9/29/17.
 //  Copyright © 2017 Stefan Markovic. All rights reserved.
-// Strana 273
+// Strana 309
 
 import UIKit
 
@@ -15,7 +15,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
 
     var restaurants: [Restaurant] = [
-        Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Hong Kong", image: "cafedeadend.jpg", isVisited: false, phone: "070 123 456"),
+        Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Adding Auto Layout Constraints for the Prototype Cell, Adding Auto Layout Constraints for the Prototype Cell", image: "cafedeadend.jpg", isVisited: false, phone: "070 123 456"),
         Restaurant(name: "Homei", type: "Cafe", location: "Hong Kong", image: "homei.jpg", isVisited: false, phone: "070 123 456"),
         Restaurant(name: "Teakha", type: "Tea House", location: "Hong Kong", image: "teakha.jpg", isVisited: false, phone: "070 123 456"),
         Restaurant(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong", image: "cafeloisl.jpg", isVisited: false, phone: "070 123 456"),

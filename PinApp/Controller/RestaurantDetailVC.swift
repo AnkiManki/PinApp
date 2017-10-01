@@ -23,8 +23,14 @@ class RestaurantDetailVC: UIViewController, UITableViewDataSource, UITableViewDe
         restaurantImageView.image = UIImage(named: restaurant.image)
         setTableViewStyle()
         title = restaurant.name
+        
+        myTableView.estimatedRowHeight = 36.0
+        myTableView.rowHeight = UITableViewAutomaticDimension
     }
     
+    @IBAction func close(segue: UIStoryboardSegue) {
+        
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
