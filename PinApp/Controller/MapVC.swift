@@ -9,14 +9,15 @@
 import UIKit
 import MapKit
 
-class MapVC: UIViewController {
+class MapVC: UIViewController, MKMapViewDelegate {
 
     @IBOutlet var mapView: MKMapView!
     var restaurant: Restaurant!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        mapView.delegate = self
+        mapView.showsCompass = true
         addAnnotation()
     }
     
@@ -39,13 +40,37 @@ class MapVC: UIViewController {
                     self.mapView.selectAnnotation(annotation, animated: true)
                 }
             }
-            
-            
+        }
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let identifier = "MyPin"
+        
+        if annotation.isKind(of: MKUserLocation.self) {
+            return nil
         }
         
+        var annotationView: MKPinAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+        }
+        
+        let leftIconView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 53, height: 53))
+        leftIconView.image = UIImage(named: restaurant.image)
+        annotationView?.leftCalloutAccessoryView = leftIconView
+        annotationView?.pinTintColor = UIColor.orange
+        
+        return annotationView
     }
 
  
+    
+    
+    
 
 }
 
