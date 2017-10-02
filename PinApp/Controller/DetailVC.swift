@@ -39,13 +39,15 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             restaurant.isVisited = true
             
             switch rating {
-            case "great": restaurant.rating = "Absolutely love it! Must try."
-            case "good": restaurant.rating = "Pretty good."
-            case "dislike": restaurant.rating = "I don't like it."
-            default: break
+                case "great": restaurant.rating = "Absolutely love it! Must try."
+                case "good": restaurant.rating = "Pretty good."
+                case "dislike": restaurant.rating = "I don't like it."
+                default: break
             }
-            myTableView.reloadData()
         }
+        
+        appDelegate.saveContext()
+        myTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,7 +69,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             cell.valueLabel.text = restaurant.location
         case 3:
             cell.fieldLabel.text = "Been here"
-            cell.valueLabel.text = (restaurant.isVisited) ? "Yes, I've been here before \(String(describing: restaurant.rating))" : "No"
+            cell.valueLabel.text = (restaurant.isVisited) ? "Yes, I've been here before \(restaurant.rating!)" : "No"
         case 4:
             cell.fieldLabel.text = "Phone"
             cell.valueLabel.text = restaurant.phone

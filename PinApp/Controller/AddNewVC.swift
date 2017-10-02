@@ -50,8 +50,7 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
                 restaurant.image = NSData(data: imageData) as Data
             }
         }
-        
-        print("Saving...")
+
         appDelegate.saveContext()
         
         dismiss(animated: true, completion: nil)

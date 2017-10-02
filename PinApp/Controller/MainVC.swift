@@ -4,7 +4,7 @@
 //
 //  Created by Stefan Markovic on 9/29/17.
 //  Copyright © 2017 Stefan Markovic. All rights reserved.
-// Strana 317
+// Strana 381
 
 import UIKit
 import CoreData
@@ -98,9 +98,13 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         
         //Delete Button
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
-            self.restaurants.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            let restaurantToDelete = self.fetchResultController.object(at: indexPath)
+            context.delete(restaurantToDelete)
+            appDelegate.saveContext()
+            
         }
+        
         shareAction.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         
