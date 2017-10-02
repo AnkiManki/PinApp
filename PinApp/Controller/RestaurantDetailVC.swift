@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 class RestaurantDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var restaurantImageView: UIImageView!
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet var mapView: MKMapView!
     
     var restaurant: Restaurant!
     
@@ -24,6 +26,11 @@ class RestaurantDetailVC: UIViewController, UITableViewDataSource, UITableViewDe
         
         myTableView.estimatedRowHeight = 36.0
         myTableView.rowHeight = UITableViewAutomaticDimension
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showMap))
+        mapView.addGestureRecognizer(tapGesture)
+        
+        addPinAnnotation()
     }
     
     
@@ -73,10 +80,44 @@ class RestaurantDetailVC: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func setTableViewStyle() {
-        myTableView.backgroundColor = UIColor(displayP3Red: 240.0, green: 240.0, blue: 240.0, alpha: 0.2)
-        myTableView.tableFooterView = UIView(frame: .zero)
-        myTableView.separatorColor = UIColor(displayP3Red: 240.0, green: 240.0, blue: 240, alpha: 0.8)
+        myTableView.backgroundColor = UIColor(red: 240.0, green: 240.0, blue: 240.0, alpha: 0.2)
+        myTableView.separatorColor = UIColor(red: 240.0, green: 240.0, blue: 240, alpha: 0.8)
     }
+    
+    @objc func showMap() {
+        performSegue(withIdentifier: "showMap", sender: self)
+    }
+    
+    func addPinAnnotation() {
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(restaurant.location) { (placemark, error) in
+            
+            if error != nil {
+                print(error.debugDescription)
+                return
+            }
+            
+            if let placemarks = placemark {
+                //Get first placemark
+                let placemark = placemarks[0]
+                let annotation = MKPointAnnotation()
+                
+                if let location = placemark.location {
+                    //display the annotations
+                    annotation.coordinate = location.coordinate
+                    self.mapView.addAnnotation(annotation)
+                    //set zoom level
+                    let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 250, 250)
+                    self.mapView.setRegion(region, animated: false)
+                }
+            }
+            
+        }
+        
+        
+        
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showReview" {
@@ -84,6 +125,8 @@ class RestaurantDetailVC: UIViewController, UITableViewDataSource, UITableViewDe
             destinationVC?.restaurant = restaurant
         }
     }
+    
+
     
     
     
