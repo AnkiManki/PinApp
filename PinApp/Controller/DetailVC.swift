@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class RestaurantDetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var restaurantImageView: UIImageView!
     @IBOutlet weak var myTableView: UITableView!
@@ -54,7 +54,7 @@ class RestaurantDetailVC: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! RestaurantDetailCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
         switch indexPath.row {
         case 0:
             cell.fieldLabel.text = "Name"
@@ -123,7 +123,11 @@ class RestaurantDetailVC: UIViewController, UITableViewDataSource, UITableViewDe
         if segue.identifier == "showReview" {
             let destinationVC = segue.destination as? ReviewVC
             destinationVC?.restaurant = restaurant
+        } else if segue.identifier == "showMap" {
+            let destinationVC = segue.destination as? MapVC
+            destinationVC?.restaurant = restaurant
         }
+        
     }
     
 

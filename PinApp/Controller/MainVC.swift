@@ -52,7 +52,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = myTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RestaurantCell
+        let cell = myTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MainCell
         cell.nameLabel.text = restaurants[indexPath.row].name
         cell.locationLabel.text = restaurants[indexPath.row].location
         cell.typeLabel.text = restaurants[indexPath.row].type
@@ -132,7 +132,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailView" {
             if let indexPath = myTableView.indexPathForSelectedRow {
-                let destinationVC = segue.destination as! RestaurantDetailVC
+                let destinationVC = segue.destination as! DetailVC
                 destinationVC.restaurant = restaurants[indexPath.row]
             }
         }

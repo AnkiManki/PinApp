@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RestaurantCell: UITableViewCell {
+class MainCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!

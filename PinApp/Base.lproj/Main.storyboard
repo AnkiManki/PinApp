@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="80" id="dnj-2l-6Lu" customClass="RestaurantCell" customModule="PinApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="80" id="dnj-2l-6Lu" customClass="MainCell" customModule="PinApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dnj-2l-6Lu" id="MQo-Uf-02t">
@@ -106,10 +106,10 @@
             </objects>
             <point key="canvasLocation" x="248.80000000000001" y="-43.628185907046479"/>
         </scene>
-        <!--Restaurant DetailVC-->
+        <!--DetailVC-->
         <scene sceneID="m9n-GU-upD">
             <objects>
-                <viewController id="Voi-6S-SGO" customClass="RestaurantDetailVC" customModule="PinApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Voi-6S-SGO" customClass="DetailVC" customModule="PinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GH5-CW-Vs1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,7 +126,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </mapView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailCell" rowHeight="36" id="mNu-mG-pV8" customClass="RestaurantDetailCell" customModule="PinApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailCell" rowHeight="36" id="mNu-mG-pV8" customClass="DetailCell" customModule="PinApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="328" width="375" height="36"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mNu-mG-pV8" id="2rC-aq-WcD">
@@ -348,6 +348,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fRK-vZ-PLF"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="W1u-WF-ysz" id="4L3-jk-tyg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vy5-t0-GKq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
