@@ -19,6 +19,7 @@
 		9D551EAF1F7E8C60002BC5F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D551EAE1F7E8C60002BC5F2 /* Assets.xcassets */; };
 		9D551EB21F7E8C60002BC5F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D551EB01F7E8C60002BC5F2 /* LaunchScreen.storyboard */; };
 		9DE033E91F823C3400795907 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE033E81F823C3400795907 /* MapVC.swift */; };
+		9DE033EB1F825C8100795907 /* AddNewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE033EA1F825C8100795907 /* AddNewVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		9D551EB11F7E8C60002BC5F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D551EB31F7E8C60002BC5F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DE033E81F823C3400795907 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		9DE033EA1F825C8100795907 /* AddNewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				9D1B058D1F80F3DC00DA6208 /* DetailVC.swift */,
 				9D3C15891F816070004C8455 /* ReviewVC.swift */,
 				9DE033E81F823C3400795907 /* MapVC.swift */,
+				9DE033EA1F825C8100795907 /* AddNewVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				9D1E2C6B1F811D7900BCEE0F /* DetailCell.swift in Sources */,
 				9D3C158A1F816070004C8455 /* ReviewVC.swift in Sources */,
 				9D1B058E1F80F3DC00DA6208 /* DetailVC.swift in Sources */,
+				9DE033EB1F825C8100795907 /* AddNewVC.swift in Sources */,
 				9D3645BE1F7FF4DA002B77F6 /* MainCell.swift in Sources */,
 				9DE033E91F823C3400795907 /* MapVC.swift in Sources */,
 				9D551EAA1F7E8C60002BC5F2 /* MainVC.swift in Sources */,

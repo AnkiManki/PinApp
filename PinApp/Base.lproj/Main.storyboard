@@ -365,7 +365,7 @@
         <!--New Restaurant-->
         <scene sceneID="pDD-vB-jyo">
             <objects>
-                <tableViewController id="Ik2-45-CJJ" sceneMemberID="viewController">
+                <tableViewController id="Ik2-45-CJJ" customClass="AddNewVC" customModule="PinApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nce-Z3-c8J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -380,7 +380,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoalbum" translatesAutoresizingMaskIntoConstraints="NO" id="vJv-MR-o4W">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoalbum" translatesAutoresizingMaskIntoConstraints="NO" id="vJv-MR-o4W">
                                                     <rect key="frame" x="155" y="92" width="64" height="64"/>
                                                 </imageView>
                                             </subviews>
@@ -551,6 +551,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="photoImageView" destination="vJv-MR-o4W" id="oPR-bA-B0F"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04z-nE-tjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CG0-bp-KbA" userLabel="Exit" sceneMemberID="exit"/>
