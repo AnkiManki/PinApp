@@ -12,7 +12,7 @@ import MapKit
 class MapVC: UIViewController, MKMapViewDelegate {
 
     @IBOutlet var mapView: MKMapView!
-    var restaurant: Restaurant!
+    var restaurant: RestaurantMO!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class MapVC: UIViewController, MKMapViewDelegate {
     
     func addAnnotation() {
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(restaurant.location) { (placemarks, error) in
+        geoCoder.geocodeAddressString(restaurant.location!) { (placemarks, error) in
             if error != nil {
                 print(error.debugDescription)
             }
@@ -60,7 +60,7 @@ class MapVC: UIViewController, MKMapViewDelegate {
         }
         
         let leftIconView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 53, height: 53))
-        leftIconView.image = UIImage(named: restaurant.image)
+        leftIconView.image = UIImage(data: restaurant.image!)
         annotationView?.leftCalloutAccessoryView = leftIconView
         annotationView?.pinTintColor = UIColor.orange
         

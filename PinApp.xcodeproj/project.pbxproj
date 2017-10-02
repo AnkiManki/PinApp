@@ -20,6 +20,7 @@
 		9D551EB21F7E8C60002BC5F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D551EB01F7E8C60002BC5F2 /* LaunchScreen.storyboard */; };
 		9DE033E91F823C3400795907 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE033E81F823C3400795907 /* MapVC.swift */; };
 		9DE033EB1F825C8100795907 /* AddNewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE033EA1F825C8100795907 /* AddNewVC.swift */; };
+		9DE033EE1F8275D900795907 /* PinApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DE033EC1F8275D900795907 /* PinApp.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		9D551EB31F7E8C60002BC5F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DE033E81F823C3400795907 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		9DE033EA1F825C8100795907 /* AddNewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewVC.swift; sourceTree = "<group>"; };
+		9DE033ED1F8275D900795907 /* PinApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PinApp.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				9D1B058F1F8112E100DA6208 /* Restaurant.swift */,
+				9DE033EC1F8275D900795907 /* PinApp.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D1B05901F8112E100DA6208 /* Restaurant.swift in Sources */,
+				9DE033EE1F8275D900795907 /* PinApp.xcdatamodeld in Sources */,
 				9D1E2C6B1F811D7900BCEE0F /* DetailCell.swift in Sources */,
 				9D3C158A1F816070004C8455 /* ReviewVC.swift in Sources */,
 				9D1B058E1F80F3DC00DA6208 /* DetailVC.swift in Sources */,
@@ -399,6 +403,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9DE033EC1F8275D900795907 /* PinApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9DE033ED1F8275D900795907 /* PinApp.xcdatamodel */,
+			);
+			currentVersion = 9DE033ED1F8275D900795907 /* PinApp.xcdatamodel */;
+			path = PinApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9D551E9C1F7E8C60002BC5F2 /* Project object */;
 }

@@ -14,7 +14,7 @@ class ReviewVC: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var closeButtonOutlet: UIButton!
     
-    var restaurant: Restaurant?
+    var restaurant: RestaurantMO?
     @IBOutlet weak var restaurantImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class ReviewVC: UIViewController {
         closeButtonOutlet.transform = CGAffineTransform.init(translationX: +1000, y: 0)
         
         if let restaurant = restaurant {
-            restaurantImageView.image = UIImage(named: restaurant.image)
+            restaurantImageView.image = UIImage(data: restaurant.image!)
         }
         
 

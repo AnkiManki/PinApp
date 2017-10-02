@@ -15,12 +15,12 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet var mapView: MKMapView!
     
-    var restaurant: Restaurant!
+    var restaurant: RestaurantMO!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        restaurantImageView.image = UIImage(named: restaurant.image)
+        restaurantImageView.image = UIImage(data: restaurant.image!)
         setTableViewStyle()
         title = restaurant.name
         
@@ -67,7 +67,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             cell.valueLabel.text = restaurant.location
         case 3:
             cell.fieldLabel.text = "Been here"
-            cell.valueLabel.text = (restaurant.isVisited) ? "Yes, I've been here before \(restaurant.rating)" : "No"
+            cell.valueLabel.text = (restaurant.isVisited) ? "Yes, I've been here before \(String(describing: restaurant.rating))" : "No"
         case 4:
             cell.fieldLabel.text = "Phone"
             cell.valueLabel.text = restaurant.phone
@@ -90,7 +90,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func addPinAnnotation() {
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(restaurant.location) { (placemark, error) in
+        geoCoder.geocodeAddressString(restaurant.location!) { (placemark, error) in
             
             if error != nil {
                 print(error.debugDescription)

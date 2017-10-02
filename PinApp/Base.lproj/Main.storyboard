@@ -223,7 +223,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeloisl" translatesAutoresizingMaskIntoConstraints="NO" id="8SH-yM-Cn2">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7v-Qx-8wR">
                                 <rect key="frame" x="53" y="60" width="269" height="400"/>
@@ -313,7 +313,7 @@
                             <constraint firstItem="aen-KM-hlF" firstAttribute="bottom" secondItem="S7v-Qx-8wR" secondAttribute="bottom" constant="207" id="7K0-PR-dDi"/>
                             <constraint firstItem="S7v-Qx-8wR" firstAttribute="leading" secondItem="aen-KM-hlF" secondAttribute="leading" constant="53" id="DV0-AO-pyT"/>
                             <constraint firstItem="8SH-yM-Cn2" firstAttribute="trailing" secondItem="aen-KM-hlF" secondAttribute="trailing" id="FKg-7g-xtC"/>
-                            <constraint firstItem="8SH-yM-Cn2" firstAttribute="top" secondItem="aen-KM-hlF" secondAttribute="top" id="LkT-Fb-KQf"/>
+                            <constraint firstItem="8SH-yM-Cn2" firstAttribute="top" secondItem="aen-KM-hlF" secondAttribute="top" constant="-20" id="LkT-Fb-KQf"/>
                             <constraint firstItem="S7v-Qx-8wR" firstAttribute="centerX" secondItem="8SH-yM-Cn2" secondAttribute="centerX" id="SVk-r3-XT9"/>
                             <constraint firstItem="8SH-yM-Cn2" firstAttribute="leading" secondItem="aen-KM-hlF" secondAttribute="leading" id="a3z-jh-mes"/>
                             <constraint firstItem="aen-KM-hlF" firstAttribute="trailing" secondItem="S7v-Qx-8wR" secondAttribute="trailing" constant="53" id="nSi-di-7Ak"/>
@@ -331,7 +331,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YC-ku-wfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="rBf-lt-pGs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="-446"/>
+            <point key="canvasLocation" x="1776.8" y="-446.62668665667172"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="oCU-dJ-TfV">
@@ -503,37 +503,41 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ob-b6-ZYR">
-                                                    <rect key="frame" x="18" y="37" width="40" height="30"/>
-                                                    <color key="backgroundColor" red="0.81960784310000001" green="0.21960784310000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <rect key="frame" x="18" y="37" width="70" height="30"/>
+                                                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="LV3-MS-alw"/>
-                                                        <constraint firstAttribute="height" constant="30" id="W9s-90-MJb"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="aXc-17-Ihh"/>
                                                     </constraints>
                                                     <state key="normal" title="YES">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="toggleBeenHereButtonsWithSender:" destination="Ik2-45-CJJ" eventType="touchUpInside" id="dHF-PG-8Xt"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQa-u3-5ZV">
-                                                    <rect key="frame" x="66" y="37" width="40" height="30"/>
+                                                    <rect key="frame" x="96" y="37" width="70" height="30"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="lxe-Sa-XSA"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="oXU-WQ-mFA"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="rce-hx-NQb"/>
                                                     </constraints>
                                                     <state key="normal" title="NO">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="toggleBeenHereButtonsWithSender:" destination="Ik2-45-CJJ" eventType="touchUpInside" id="6NY-hR-96A"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ZEj-OY-VW4" firstAttribute="top" secondItem="nhE-Ok-YcC" secondAttribute="topMargin" id="0wO-WL-qbT"/>
+                                                <constraint firstItem="9Ob-b6-ZYR" firstAttribute="baseline" secondItem="bQa-u3-5ZV" secondAttribute="baseline" id="1K4-BS-w2D"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZEj-OY-VW4" secondAttribute="trailing" constant="20" symbolic="YES" id="50A-9p-kBO"/>
-                                                <constraint firstItem="bQa-u3-5ZV" firstAttribute="top" secondItem="ZEj-OY-VW4" secondAttribute="bottom" constant="8" symbolic="YES" id="HVT-EO-H9H"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bQa-u3-5ZV" secondAttribute="trailing" constant="20" symbolic="YES" id="hKl-Rk-FGM"/>
+                                                <constraint firstItem="bQa-u3-5ZV" firstAttribute="leading" secondItem="9Ob-b6-ZYR" secondAttribute="trailing" constant="8" symbolic="YES" id="JWa-v9-7hl"/>
+                                                <constraint firstItem="9Ob-b6-ZYR" firstAttribute="top" secondItem="ZEj-OY-VW4" secondAttribute="bottom" constant="8" symbolic="YES" id="NMZ-Cy-EhZ"/>
                                                 <constraint firstItem="ZEj-OY-VW4" firstAttribute="leading" secondItem="nhE-Ok-YcC" secondAttribute="leadingMargin" constant="10" id="s2R-5R-wvK"/>
-                                                <constraint firstItem="ZEj-OY-VW4" firstAttribute="leading" secondItem="9Ob-b6-ZYR" secondAttribute="leading" id="wBZ-is-E7r"/>
-                                                <constraint firstItem="9Ob-b6-ZYR" firstAttribute="top" secondItem="ZEj-OY-VW4" secondAttribute="bottom" constant="8" symbolic="YES" id="yVa-Cg-vlR"/>
-                                                <constraint firstItem="bQa-u3-5ZV" firstAttribute="leading" secondItem="9Ob-b6-ZYR" secondAttribute="trailing" constant="8" symbolic="YES" id="yze-wT-An1"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bQa-u3-5ZV" secondAttribute="trailing" constant="20" symbolic="YES" id="s5j-ua-IJ5"/>
+                                                <constraint firstItem="9Ob-b6-ZYR" firstAttribute="leading" secondItem="ZEj-OY-VW4" secondAttribute="leading" id="tGw-fe-t1e"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -552,9 +556,20 @@
                                 <segue destination="CG0-bp-KbA" kind="unwind" unwindAction="unwindToHomeScreenWithSegue:" id="evQ-ps-Xx1"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hc7-Zu-CyG">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="saveButton:" destination="Ik2-45-CJJ" id="hEM-eE-aGq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="locationTextField" destination="5nd-gN-znY" id="nay-gd-Rlr"/>
+                        <outlet property="nameTextField" destination="VOq-ft-6dQ" id="lwZ-mk-fCF"/>
+                        <outlet property="noButton" destination="bQa-u3-5ZV" id="j7G-25-sQA"/>
                         <outlet property="photoImageView" destination="vJv-MR-o4W" id="oPR-bA-B0F"/>
+                        <outlet property="typeTextField" destination="wXH-Bw-25Z" id="PD0-Yz-X3A"/>
+                        <outlet property="yesButton" destination="9Ob-b6-ZYR" id="6ZZ-7g-EIm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04z-nE-tjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
