@@ -77,9 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				9D551EA91F7E8C60002BC5F2 /* MainVC.swift */,
-				9D3645BD1F7FF4DA002B77F6 /* RestaurantCell.swift */,
 				9D1B058D1F80F3DC00DA6208 /* RestaurantDetailVC.swift */,
-				9D1E2C6A1F811D7900BCEE0F /* RestaurantDetailCell.swift */,
 				9D3C15891F816070004C8455 /* ReviewVC.swift */,
 			);
 			path = Controller;
@@ -99,6 +97,8 @@
 		9D551EBB1F7E924C002BC5F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9D3645BD1F7FF4DA002B77F6 /* RestaurantCell.swift */,
+				9D1E2C6A1F811D7900BCEE0F /* RestaurantDetailCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

@@ -40,23 +40,23 @@
                                                                 <constraint firstAttribute="height" constant="60" id="gEO-96-MFY"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="mTo-lA-Efb">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="mTo-lA-Efb">
                                                             <rect key="frame" x="70" y="0.0" width="283" height="55.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Sj-kL-b7q">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="47" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="283" height="20.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJl-cH-vZp">
-                                                                    <rect key="frame" x="0.0" y="21.5" width="55" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="21.5" width="283" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DhH-xO-F7o">
-                                                                    <rect key="frame" x="0.0" y="39.5" width="29.5" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="39.5" width="283" height="16"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -68,6 +68,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="z0K-f3-AXn" firstAttribute="top" secondItem="MQo-Uf-02t" secondAttribute="topMargin" constant="2" id="05i-TO-OIj"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="z0K-f3-AXn" secondAttribute="bottom" constant="1.5" id="J3m-p6-Qab"/>
                                                 <constraint firstItem="z0K-f3-AXn" firstAttribute="leading" secondItem="MQo-Uf-02t" secondAttribute="leadingMargin" constant="6" id="l6T-eX-NOf"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="z0K-f3-AXn" secondAttribute="trailing" id="qqU-cf-XSq"/>
                                             </constraints>
@@ -231,6 +232,9 @@
                                                 <state key="normal" title="Absolutely love it!">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="rBf-lt-pGs" kind="unwind" identifier="great" unwindAction="ratingButtonTappedWithSegue:" id="Lp0-yI-q0d"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8A1-mz-EAd">
                                                 <rect key="frame" x="0.0" y="36" width="253" height="30.5"/>
@@ -239,6 +243,9 @@
                                                 <state key="normal" title="Good">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="rBf-lt-pGs" kind="unwind" identifier="good" unwindAction="ratingButtonTappedWithSegue:" id="Ux7-Rf-0yO"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmS-VP-Vds">
                                                 <rect key="frame" x="0.0" y="71.5" width="253" height="31"/>
@@ -247,6 +254,9 @@
                                                 <state key="normal" title="I don't like it">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="rBf-lt-pGs" kind="unwind" identifier="dislike" unwindAction="ratingButtonTappedWithSegue:" id="B2p-1q-YY4"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -301,10 +311,13 @@
                     </view>
                     <connections>
                         <outlet property="backGroundImgView" destination="8SH-yM-Cn2" id="oNb-R7-eae"/>
+                        <outlet property="closeButtonOutlet" destination="jGw-Te-bS6" id="vlj-J0-3iH"/>
                         <outlet property="containerView" destination="S7v-Qx-8wR" id="CNG-eg-5Pr"/>
+                        <outlet property="restaurantImageView" destination="x6C-ox-mjS" id="4d1-1f-jQ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YC-ku-wfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rBf-lt-pGs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1748" y="-45.42728635682159"/>
         </scene>

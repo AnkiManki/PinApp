@@ -12,34 +12,41 @@ class ReviewVC: UIViewController {
     
     @IBOutlet weak var backGroundImgView: UIImageView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var closeButtonOutlet: UIButton!
+    
+    var restaurant: Restaurant?
+    @IBOutlet weak var restaurantImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addBlurEffect()
         
-        containerView.transform = CGAffineTransform.init(scaleX: 0, y: 0)
+        containerView.transform = CGAffineTransform.init(translationX: 0, y: -1000)
+        closeButtonOutlet.transform = CGAffineTransform.init(translationX: +1000, y: 0)
+        
+        if let restaurant = restaurant {
+            restaurantImageView.image = UIImage(named: restaurant.image)
+        }
+        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
             self.containerView.transform = CGAffineTransform.identity
         }, completion: nil)
+        
+        UIView.animate(withDuration: 0.4) {
+            self.closeButtonOutlet.transform = CGAffineTransform.identity
+        }
+
     }
     
-    
+
     @IBAction func closeButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
     func addBlurEffect() {
         let blurEffect = UIBlurEffect(style: .dark)
@@ -47,5 +54,25 @@ class ReviewVC: UIViewController {
         blurEffectView.frame = view.bounds
         backGroundImgView.addSubview(blurEffectView)
     }
+
+
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
