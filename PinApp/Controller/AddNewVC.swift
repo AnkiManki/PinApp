@@ -20,6 +20,7 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     
@@ -43,6 +44,7 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         restaurant.name = nameTextField.text
         restaurant.type = typeTextField.text
         restaurant.location = locationTextField.text
+        restaurant.phone = phoneTextField.text
         restaurant.isVisited = isVisited
         
         if let restaurantImage = photoImageView.image {
@@ -57,7 +59,6 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     }
     
     @IBAction func toggleBeenHereButtons(sender: UIButton) {
-        
         if sender == yesButton {
             isVisited = true
             yesButton.backgroundColor = UIColor.red
@@ -67,8 +68,6 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
             yesButton.backgroundColor = UIColor.gray
             noButton.backgroundColor = UIColor.red
         }
-        
-        
     }
     
     
@@ -86,7 +85,6 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             photoImageView.image = selectedImage
             photoImageView.contentMode = .scaleAspectFill
@@ -94,7 +92,6 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         }
         
         dismiss(animated: true, completion: nil)
-        
     }
     
     
