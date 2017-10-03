@@ -22,14 +22,15 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         super.viewDidLoad()
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         fetchData()
         
         searchController = UISearchController(searchResultsController: nil)
         myTableView.tableHeaderView = searchController.searchBar
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        searchBarAppearance()
     }
-    
     
     //MARK: - TableViews
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,36 +59,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         
         return cell
     }
-    
-    //MARK: - Alert actions
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //
-    //        let alert = UIAlertController(title: nil, message: "What do you want to do?" , preferredStyle: .actionSheet)
-    //        let callAction = UIAlertAction(title: "Call " + "123-000-\(indexPath.row)", style: .default) { (action) in
-    //
-    //            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
-    //            let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-    //            alertMessage.addAction(alertAction)
-    //            self.present(alertMessage, animated: true, completion: nil)
-    //        }
-    //
-    //        let checkInTitle = restaurantIsVisited[indexPath.row] ? "Undo Check in" : "Check in"
-    //        let checkInAction = UIAlertAction(title: checkInTitle, style: .default) { (action) in
-    //
-    //            let cell = tableView.cellForRow(at: indexPath)
-    //            self.restaurantIsVisited[indexPath.row] = self.restaurantIsVisited[indexPath.row] ? false : true
-    //            cell?.accessoryType = self.restaurantIsVisited[indexPath.row] ? .checkmark : .none
-    //        }
-    //
-    //        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-    //
-    //        alert.addAction(callAction)
-    //        alert.addAction(checkInAction)
-    //        alert.addAction(cancelAction)
-    //
-    //        present(alert, animated: true, completion: nil)
-    //        tableView.deselectRow(at: indexPath, animated: false)
-    //    }
     
     //MARK: - Share and Delete Swipe Actions
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -209,8 +180,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     func filterContent(searchText: String) {
         
         searchResults = restaurants.filter({ (restaurant) -> Bool in
-            if let name = restaurant.name {
-                let isMatch = name.localizedCaseInsensitiveContains(searchText)
+            if let name = restaurant.name, let location = restaurant.location {
+                let isMatch = name.localizedCaseInsensitiveContains(searchText) || location.localizedCaseInsensitiveContains(searchText)
                 return isMatch
             }
             return false
@@ -225,10 +196,12 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         }
     }
     
-    
-    
-    
-    
+    func searchBarAppearance() {
+        searchController.searchBar.placeholder = "Search restaurants..."
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.barTintColor = UIColor(red: 218.0/255.0, green: 100.0/255.0, blue: 70.0/255.0, alpha: 1.0)
+    }
+
     
     
     
