@@ -11,12 +11,11 @@ import CoreData
 
 class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    //MARK: - Variables
     var isVisited = false
-    
     var restaurant: RestaurantMO!
     
     @IBOutlet var photoImageView: UIImageView!
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
@@ -29,8 +28,8 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
 
     }
     
+    //MARK: - IBAction - save button
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        
         if nameTextField.text == "" || typeTextField.text == "" || locationTextField.text == "" {
             let alertController = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. Please note that all fields are required.", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -57,7 +56,7 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         
         dismiss(animated: true, completion: nil)
     }
-    
+    //MARK: Chnage buttons color
     @IBAction func toggleBeenHereButtons(sender: UIButton) {
         if sender == yesButton {
             isVisited = true
@@ -70,7 +69,7 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         }
     }
     
-    
+    //MARK: - TableView - select image
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -84,6 +83,7 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         }
     }
     
+    //MARK: - Adjust Image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             photoImageView.image = selectedImage

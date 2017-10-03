@@ -11,6 +11,7 @@ import MapKit
 
 class MapVC: UIViewController, MKMapViewDelegate {
 
+    //MARK: - Variables
     @IBOutlet var mapView: MKMapView!
     var restaurant: RestaurantMO!
     
@@ -21,6 +22,7 @@ class MapVC: UIViewController, MKMapViewDelegate {
         addAnnotation()
     }
     
+    //MARK: - Add annotation and get pin location from address
     func addAnnotation() {
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(restaurant.location!) { (placemarks, error) in
@@ -44,6 +46,7 @@ class MapVC: UIViewController, MKMapViewDelegate {
     }
     
     
+    //MARK: - Customize annotation to show title and image
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let identifier = "MyPin"

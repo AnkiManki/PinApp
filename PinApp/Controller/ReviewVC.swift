@@ -10,11 +10,12 @@ import UIKit
 
 class ReviewVC: UIViewController {
     
+    //MARK: - Variables
+    var restaurant: RestaurantMO?
+    
     @IBOutlet weak var backGroundImgView: UIImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var closeButtonOutlet: UIButton!
-    
-    var restaurant: RestaurantMO?
     @IBOutlet weak var restaurantImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -27,10 +28,9 @@ class ReviewVC: UIViewController {
         if let restaurant = restaurant {
             restaurantImageView.image = UIImage(data: restaurant.image!)
         }
-        
-
     }
     
+    //MARK: - View Did Appear
     override func viewDidAppear(_ animated: Bool) {
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
             self.containerView.transform = CGAffineTransform.identity
@@ -42,12 +42,12 @@ class ReviewVC: UIViewController {
 
     }
     
-
+    //MARK: - Close button
     @IBAction func closeButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 
-    
+    //MARK: - Blur effect
     func addBlurEffect() {
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)

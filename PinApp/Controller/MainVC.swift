@@ -4,13 +4,14 @@
 //
 //  Created by Stefan Markovic on 9/29/17.
 //  Copyright © 2017 Stefan Markovic. All rights reserved.
-// Strana 381
+//
 
 import UIKit
 import CoreData
 
 class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
     
+    //MARK: - Variables
     @IBOutlet weak var myTableView: UITableView!
     
     var restaurants: [RestaurantMO] = []
@@ -34,7 +35,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     
     //MARK: - TableViews
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
+        
         if searchController.isActive {
             return searchResults.count
         } else {
@@ -45,9 +46,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = myTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MainCell
-        
         let restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
-
         cell.nameLabel.text = restaurant.name
         cell.locationLabel.text = restaurant.location
         cell.typeLabel.text = restaurant.type
@@ -71,7 +70,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        //Social sharing
+        //MARK: Social sharing
         let shareAction = UITableViewRowAction(style: .default, title: "Share") { (action, indexPath) in
             
             let defaultText = "Just checking in at  \(self.restaurants[indexPath.row].name!)"
@@ -83,21 +82,20 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
             
         }
         
-        //Delete Button
+        //MARK: Delete Button
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
             
             let restaurantToDelete = self.fetchResultController.object(at: indexPath)
             context.delete(restaurantToDelete)
             appDelegate.saveContext()
-            
         }
-        
         shareAction.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         
         return [deleteAction, shareAction]
     }
     
+    //MARK: - Disable edit of cells when search is active
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if searchController.isActive {
             return false
@@ -106,8 +104,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         }
     }
     
+    //MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "ShowDetailView" {
             if let indexPath = myTableView.indexPathForSelectedRow {
                 let destinationVC = segue.destination as! DetailVC
@@ -120,7 +118,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         
     }
     
-    
+    //MARK: - Fetch data from core data
     func fetchData() {
         
         let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
@@ -143,12 +141,12 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         }
     }
     
-    //Called when we start processing content change
+    //MARK: Called when we start processing content change
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         myTableView.beginUpdates()
     }
     
-    //Whenever there is change in the data we call this method
+    //MARK: Whenever there is change in the data we call this method
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         switch type {
@@ -173,10 +171,12 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         }
     }
     
+    //MARK: Finish updating the table
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         myTableView.endUpdates()
     }
     
+    //MARK: - Filter content
     func filterContent(searchText: String) {
         searchResults = restaurants.filter({ (restaurant) -> Bool in
             if let name = restaurant.name, let location = restaurant.location {
@@ -187,6 +187,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         })
     }
     
+    //MARK: - Update search results
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
             filterContent(searchText: searchText)
@@ -194,6 +195,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         }
     }
     
+    //MARK: - Search bar UI
     func searchBarAppearance() {
         searchController.searchBar.placeholder = "Search restaurants..."
         searchController.searchBar.tintColor = UIColor.white

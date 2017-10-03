@@ -11,6 +11,7 @@ import MapKit
 
 class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    //MARK: - Variables
     @IBOutlet var restaurantImageView: UIImageView!
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet var mapView: MKMapView!
@@ -33,7 +34,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         addPinAnnotation()
     }
     
-    
+    //MARK: - IBAction - rating button
     @IBAction func ratingButtonTapped(segue: UIStoryboardSegue) {
         if let rating = segue.identifier {
             restaurant.isVisited = true
@@ -50,6 +51,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         myTableView.reloadData()
     }
     
+    //MARK: - Table Views
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
@@ -81,15 +83,32 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 4 {
+            
+            if let phone = restaurant.phone {
+                let alert = UIAlertController(title: "\(phone)", message: "Do you want to call \(restaurant.name ?? "")", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Call", style: .default, handler: nil)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.addAction(cancelAction)
+                present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    //MARK: - TableView design
     func setTableViewStyle() {
         myTableView.backgroundColor = UIColor(red: 240.0, green: 240.0, blue: 240.0, alpha: 0.2)
         myTableView.separatorColor = UIColor(red: 240.0, green: 240.0, blue: 240, alpha: 0.8)
     }
     
+    //MARK: - Add gesture recognizer to the mini map
     @objc func showMap() {
         performSegue(withIdentifier: "showMap", sender: self)
     }
     
+    //MARK: - Add pin annotation to the map
     func addPinAnnotation() {
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(restaurant.location!) { (placemark, error) in
@@ -116,6 +135,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    //MARK: - Perform segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showReview" {
             let destinationVC = segue.destination as? ReviewVC
@@ -127,20 +147,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
     }
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 4 {
-            
-            if let phone = restaurant.phone {
-                let alert = UIAlertController(title: "\(phone)", message: "Do you want to call \(restaurant.name ?? "")", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Call", style: .default, handler: nil)
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                alert.addAction(okAction)
-                alert.addAction(cancelAction)
-                present(alert, animated: true, completion: nil)
-            }
-        }
-    }
+
 
     
     
