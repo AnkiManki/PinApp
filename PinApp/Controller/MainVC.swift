@@ -52,9 +52,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         cell.locationLabel.text = restaurant.location
         cell.typeLabel.text = restaurant.type
         cell.thumbnailImageView.image = UIImage(data: restaurant.image!)
-        cell.thumbnailImageView.layer.cornerRadius = 30
+        cell.thumbnailImageView.layer.cornerRadius = 5
         cell.thumbnailImageView.clipsToBounds = true
-        
+        cell.tintColor = UIColor.white
         cell.accessoryType = restaurant.isVisited ? .checkmark : .none
         
         return cell
@@ -178,7 +178,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     }
     
     func filterContent(searchText: String) {
-        
         searchResults = restaurants.filter({ (restaurant) -> Bool in
             if let name = restaurant.name, let location = restaurant.location {
                 let isMatch = name.localizedCaseInsensitiveContains(searchText) || location.localizedCaseInsensitiveContains(searchText)
@@ -189,7 +188,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        
         if let searchText = searchController.searchBar.text {
             filterContent(searchText: searchText)
             myTableView.reloadData()
@@ -199,7 +197,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     func searchBarAppearance() {
         searchController.searchBar.placeholder = "Search restaurants..."
         searchController.searchBar.tintColor = UIColor.white
-        searchController.searchBar.barTintColor = UIColor(red: 218.0/255.0, green: 100.0/255.0, blue: 70.0/255.0, alpha: 1.0)
+        searchController.searchBar.barTintColor = UIColor(red: 25/255, green: 25/255, blue: 25/255, alpha: 1)
     }
 
     
