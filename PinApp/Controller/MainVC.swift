@@ -9,36 +9,52 @@
 import UIKit
 import CoreData
 
-class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
     
     @IBOutlet weak var myTableView: UITableView!
     
     var restaurants: [RestaurantMO] = []
     var fetchResultController: NSFetchedResultsController<RestaurantMO>!
+    var searchController: UISearchController!
+    var searchResults: [RestaurantMO] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         fetchData()
+        
+        searchController = UISearchController(searchResultsController: nil)
+        myTableView.tableHeaderView = searchController.searchBar
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
     }
     
     
     //MARK: - TableViews
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurants.count
+       
+        if searchController.isActive {
+            return searchResults.count
+        } else {
+            return restaurants.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = myTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MainCell
-        cell.nameLabel.text = restaurants[indexPath.row].name
-        cell.locationLabel.text = restaurants[indexPath.row].location
-        cell.typeLabel.text = restaurants[indexPath.row].type
-        cell.thumbnailImageView.image = UIImage(data: restaurants[indexPath.row].image!)
+        
+        let restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
+
+        cell.nameLabel.text = restaurant.name
+        cell.locationLabel.text = restaurant.location
+        cell.typeLabel.text = restaurant.type
+        cell.thumbnailImageView.image = UIImage(data: restaurant.image!)
         cell.thumbnailImageView.layer.cornerRadius = 30
         cell.thumbnailImageView.clipsToBounds = true
         
-        cell.accessoryType = restaurants[indexPath.row].isVisited ? .checkmark : .none
+        cell.accessoryType = restaurant.isVisited ? .checkmark : .none
         
         return cell
     }
@@ -75,6 +91,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     
     //MARK: - Share and Delete Swipe Actions
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
             restaurants.remove(at: indexPath.row)
         }
@@ -110,11 +127,20 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         return [deleteAction, shareAction]
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if searchController.isActive {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "ShowDetailView" {
             if let indexPath = myTableView.indexPathForSelectedRow {
                 let destinationVC = segue.destination as! DetailVC
-                destinationVC.restaurant = restaurants[indexPath.row]
+                destinationVC.restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
             }
         }
     }
@@ -180,7 +206,24 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         myTableView.endUpdates()
     }
     
+    func filterContent(searchText: String) {
+        
+        searchResults = restaurants.filter({ (restaurant) -> Bool in
+            if let name = restaurant.name {
+                let isMatch = name.localizedCaseInsensitiveContains(searchText)
+                return isMatch
+            }
+            return false
+        })
+    }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        if let searchText = searchController.searchBar.text {
+            filterContent(searchText: searchText)
+            myTableView.reloadData()
+        }
+    }
     
     
     
