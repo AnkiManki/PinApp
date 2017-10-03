@@ -39,10 +39,10 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             restaurant.isVisited = true
             
             switch rating {
-                case "great": restaurant.rating = "Absolutely love it! Must try."
-                case "good": restaurant.rating = "Pretty good."
-                case "dislike": restaurant.rating = "I don't like it."
-                default: break
+            case "great": restaurant.rating = "Absolutely love it! Must try."
+            case "good": restaurant.rating = "Pretty good."
+            case "dislike": restaurant.rating = "I don't like it."
+            default: break
             }
         }
         
@@ -113,13 +113,8 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     self.mapView.setRegion(region, animated: false)
                 }
             }
-            
         }
-        
-        
-        
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showReview" {
@@ -132,6 +127,20 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 4 {
+            
+            if let phone = restaurant.phone {
+                let alert = UIAlertController(title: "\(phone)", message: "Do you want to call \(restaurant.name ?? "")", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Call", style: .default, handler: nil)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alert.addAction(okAction)
+                alert.addAction(cancelAction)
+                present(alert, animated: true, completion: nil)
+            }
+        }
+    }
 
     
     
