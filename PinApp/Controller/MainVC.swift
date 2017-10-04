@@ -50,7 +50,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
 
         cell.configureCell(restaurant: restaurant)
         
-        cell.thumbnailImageView.layer.cornerRadius = 9.5
+        cell.thumbnailImageView.layer.cornerRadius = 12
         cell.thumbnailImageView.clipsToBounds = true
         cell.tintColor = #colorLiteral(red: 0.2006471157, green: 0.2145825028, blue: 0.2327077687, alpha: 1)
         cell.accessoryType = restaurant.isVisited ? .checkmark : .none
@@ -198,7 +198,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     func searchBarAppearance() {
         searchController.searchBar.placeholder = "Search restaurants..."
         searchController.searchBar.tintColor = UIColor.white
-        searchController.searchBar.barTintColor = #colorLiteral(red: 0.2, green: 0.2156862745, blue: 0.231372549, alpha: 1)
+        searchController.searchBar.barTintColor = #colorLiteral(red: 0.3160597086, green: 0.3289884627, blue: 0.3499003947, alpha: 1)
     }
 
     

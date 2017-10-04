@@ -61,12 +61,12 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     @IBAction func toggleBeenHereButtons(sender: UIButton) {
         if sender == yesButton {
             isVisited = true
-            yesButton.backgroundColor = UIColor.red
-            noButton.backgroundColor = UIColor.gray
+            yesButton.backgroundColor = #colorLiteral(red: 0.8899894357, green: 0.449493885, blue: 0.2545161545, alpha: 1)
+            noButton.backgroundColor = #colorLiteral(red: 0.6619003415, green: 0.6625102758, blue: 0.6361036897, alpha: 1)
         } else if sender == noButton {
             isVisited = false
-            yesButton.backgroundColor = UIColor.gray
-            noButton.backgroundColor = UIColor.red
+            yesButton.backgroundColor = #colorLiteral(red: 0.6545231938, green: 0.6551280618, blue: 0.6286643147, alpha: 1)
+            noButton.backgroundColor = #colorLiteral(red: 0.8865249753, green: 0.4494825602, blue: 0.2545202971, alpha: 1)
         }
     }
     
