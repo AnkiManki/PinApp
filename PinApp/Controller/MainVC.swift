@@ -47,13 +47,12 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         
         let cell = myTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MainCell
         let restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
-        cell.nameLabel.text = restaurant.name
-        cell.locationLabel.text = restaurant.location
-        cell.typeLabel.text = restaurant.type
-        cell.thumbnailImageView.image = UIImage(data: restaurant.image!)
-        cell.thumbnailImageView.layer.cornerRadius = 5
+
+        cell.configureCell(restaurant: restaurant)
+        
+        cell.thumbnailImageView.layer.cornerRadius = 9.5
         cell.thumbnailImageView.clipsToBounds = true
-        cell.tintColor = UIColor.white
+        cell.tintColor = #colorLiteral(red: 0.2006471157, green: 0.2145825028, blue: 0.2327077687, alpha: 1)
         cell.accessoryType = restaurant.isVisited ? .checkmark : .none
         
         return cell
@@ -89,8 +88,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
             context.delete(restaurantToDelete)
             appDelegate.saveContext()
         }
-        shareAction.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        shareAction.backgroundColor = #colorLiteral(red: 0.4479328394, green: 0.7674189806, blue: 0.7529405951, alpha: 1)
+        deleteAction.backgroundColor = #colorLiteral(red: 0.8899894357, green: 0.449493885, blue: 0.2545161545, alpha: 1)
         
         return [deleteAction, shareAction]
     }
@@ -199,7 +198,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     func searchBarAppearance() {
         searchController.searchBar.placeholder = "Search restaurants..."
         searchController.searchBar.tintColor = UIColor.white
-        searchController.searchBar.barTintColor = UIColor(red: 25/255, green: 25/255, blue: 25/255, alpha: 1)
+        searchController.searchBar.barTintColor = #colorLiteral(red: 0.2, green: 0.2156862745, blue: 0.231372549, alpha: 1)
     }
 
     

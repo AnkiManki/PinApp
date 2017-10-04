@@ -15,4 +15,12 @@ class MainCell: UITableViewCell {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
 
+    func configureCell(restaurant: RestaurantMO) {
+        nameLabel.text = restaurant.name
+        locationLabel.text = restaurant.location
+        typeLabel.text = restaurant.type
+        thumbnailImageView.image = UIImage(data: restaurant.image!)
+    }
+    
 }
+

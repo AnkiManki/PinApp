@@ -42,7 +42,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             switch rating {
             case "great": restaurant.rating = "Absolutely love it! Must try."
             case "good": restaurant.rating = "Pretty good."
-            case "dislike": restaurant.rating = "I don't like it."
+            case "dislike": restaurant.rating = "It's not good I don't like it."
             default: break
             }
         }
@@ -80,6 +80,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             cell.valueLabel.text = ""
         }
         cell.backgroundColor = UIColor.clear
+        
         return cell
     }
     

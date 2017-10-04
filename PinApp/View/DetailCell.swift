@@ -12,5 +12,5 @@ class DetailCell: UITableViewCell {
 
     @IBOutlet var fieldLabel:UILabel!
     @IBOutlet var valueLabel:UILabel!
-
+    
 }

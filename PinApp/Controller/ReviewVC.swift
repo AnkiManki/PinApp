@@ -18,16 +18,28 @@ class ReviewVC: UIViewController {
     @IBOutlet weak var closeButtonOutlet: UIButton!
     @IBOutlet weak var restaurantImageView: UIImageView!
     
+    @IBOutlet weak var loveItBtn: UIButton!
+    @IBOutlet weak var goodBtn: UIButton!
+    @IBOutlet weak var notGoodBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addBlurEffect()
-        
+
         containerView.transform = CGAffineTransform.init(translationX: 0, y: -1000)
         closeButtonOutlet.transform = CGAffineTransform.init(translationX: +1000, y: 0)
         
         if let restaurant = restaurant {
             restaurantImageView.image = UIImage(data: restaurant.image!)
         }
+
+        loveItBtn.roundButton()
+        goodBtn.roundButton()
+        notGoodBtn.roundButton()
+        
+        restaurantImageView.roundImage()
+        containerView.roundCorners()
+        
     }
     
     //MARK: - View Did Appear
@@ -54,6 +66,7 @@ class ReviewVC: UIViewController {
         blurEffectView.frame = view.bounds
         backGroundImgView.addSubview(blurEffectView)
     }
+    
 
 
     

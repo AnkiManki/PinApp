@@ -25,13 +25,14 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        yesButton.roundButton()
+        noButton.roundButton()
     }
     
     //MARK: - IBAction - save button
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
         if nameTextField.text == "" || typeTextField.text == "" || locationTextField.text == "" {
-            let alertController = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. Please note that all fields are required.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank.", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
@@ -90,7 +91,6 @@ class AddNewVC: UITableViewController, UIImagePickerControllerDelegate, UINaviga
             photoImageView.contentMode = .scaleAspectFill
             photoImageView.clipsToBounds = true
         }
-        
         dismiss(animated: true, completion: nil)
     }
     
