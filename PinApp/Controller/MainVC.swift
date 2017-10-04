@@ -31,7 +31,16 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchBarAppearance()
+        
+        startAnimatingCells()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //stopAnimatingCells()
+    }
+    
     
     //MARK: - TableViews
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,7 +63,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         cell.thumbnailImageView.clipsToBounds = true
         cell.tintColor = #colorLiteral(red: 0.2006471157, green: 0.2145825028, blue: 0.2327077687, alpha: 1)
         cell.accessoryType = restaurant.isVisited ? .checkmark : .none
-        
+
         return cell
     }
     
@@ -135,7 +144,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
                     restaurants = fetchedObjects
                 }
             } catch {
-                print(error)
+                print(error.localizedDescription)
             }
         }
     }
@@ -200,6 +209,30 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         searchController.searchBar.tintColor = UIColor.white
         searchController.searchBar.barTintColor = #colorLiteral(red: 0.3160597086, green: 0.3289884627, blue: 0.3499003947, alpha: 1)
     }
+
+    func startAnimatingCells() {
+        myTableView.reloadData()
+        let cells = myTableView.visibleCells
+        let tableHeight: CGFloat = myTableView.bounds.size.height
+        
+        for cell in cells {
+            let cell: UITableViewCell = cell as UITableViewCell
+            cell.transform = CGAffineTransform(translationX: tableHeight, y: 0)
+        }
+        
+        var delay = 0.2
+        
+        for cell in cells {
+            let cell: UITableViewCell = cell as UITableViewCell
+            UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            
+            print("Animating")
+            delay += 0.1
+        }
+    }
+    
 
     
     

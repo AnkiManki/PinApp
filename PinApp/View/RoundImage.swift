@@ -15,9 +15,8 @@ extension UIImageView {
         layer.cornerRadius = 15
         layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
-    
-    
 }
+
 
 extension UIView {
     func roundCorners() {
