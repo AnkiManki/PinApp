@@ -220,15 +220,13 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
             cell.transform = CGAffineTransform(translationX: tableHeight, y: 0)
         }
         
-        var delay = 0.2
+        var delay = 0.1
         
         for cell in cells {
             let cell: UITableViewCell = cell as UITableViewCell
             UIView.animate(withDuration: 0.3, delay: delay, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
                 cell.transform = CGAffineTransform.identity
             }, completion: nil)
-            
-            print("Animating")
             delay += 0.1
         }
     }
