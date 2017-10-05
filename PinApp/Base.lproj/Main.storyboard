@@ -128,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="248.80000000000001" y="-43.628185907046479"/>
+            <point key="canvasLocation" x="249" y="-45"/>
         </scene>
         <!--DetailVC-->
         <scene sceneID="m9n-GU-upD">
@@ -249,7 +249,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7v-Qx-8wR">
                                 <rect key="frame" x="53" y="60" width="269" height="421"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barrafina" translatesAutoresizingMaskIntoConstraints="NO" id="x6C-ox-mjS">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x6C-ox-mjS">
                                         <rect key="frame" x="0.0" y="0.0" width="269" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="zRW-1e-RnU"/>
@@ -684,7 +684,6 @@
     </scenes>
     <resources>
         <image name="Group" width="78" height="78"/>
-        <image name="barrafina" width="480" height="480"/>
         <image name="cafeloisl" width="480" height="480"/>
         <image name="photoalbum" width="64" height="64"/>
         <image name="tick" width="84" height="84"/>

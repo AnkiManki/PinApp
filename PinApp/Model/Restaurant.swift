@@ -18,4 +18,3 @@ struct Restaurant {
     var phone = ""
     var rating = ""
 }
-

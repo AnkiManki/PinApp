@@ -17,7 +17,7 @@ extension UIButton {
         layer.masksToBounds = false
         layer.shadowRadius = 1.0
         layer.shadowOpacity = 0.5
-        layer.cornerRadius = 15
+        layer.cornerRadius = 5
     }
     
     

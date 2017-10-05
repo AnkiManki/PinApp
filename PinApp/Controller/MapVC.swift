@@ -45,7 +45,6 @@ class MapVC: UIViewController, MKMapViewDelegate {
         }
     }
     
-    
     //MARK: - Customize annotation to show title and image
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         

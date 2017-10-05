@@ -97,6 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
+//MARK: - My coredata shortcuts
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let context = appDelegate.persistentContainer.viewContext
 

@@ -17,7 +17,6 @@ class ReviewVC: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var closeButtonOutlet: UIButton!
     @IBOutlet weak var restaurantImageView: UIImageView!
-    
     @IBOutlet weak var loveItBtn: UIButton!
     @IBOutlet weak var goodBtn: UIButton!
     @IBOutlet weak var notGoodBtn: UIButton!
