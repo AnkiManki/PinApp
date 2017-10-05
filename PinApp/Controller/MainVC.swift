@@ -210,6 +210,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         searchController.searchBar.barTintColor = #colorLiteral(red: 0.3160597086, green: 0.3289884627, blue: 0.3499003947, alpha: 1)
     }
 
+    //MARK: - Animating cells
     func startAnimatingCells() {
         myTableView.reloadData()
         let cells = myTableView.visibleCells
