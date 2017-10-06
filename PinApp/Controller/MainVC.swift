@@ -52,6 +52,11 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
 
         cell.configureCell(restaurant: restaurant)
         
+        cell.thumbnailImageView.layer.cornerRadius = 12
+        cell.thumbnailImageView.clipsToBounds = true
+        cell.tintColor = #colorLiteral(red: 0.2006471157, green: 0.2145825028, blue: 0.2327077687, alpha: 1)
+        cell.accessoryType = restaurant.isVisited ? .checkmark : .none
+        
         return cell
     }
     

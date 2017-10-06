@@ -20,6 +20,7 @@ class MainCell: UITableViewCell {
         locationLabel.text = restaurant.location
         typeLabel.text = restaurant.type
         thumbnailImageView.image = UIImage(data: restaurant.image!)
+
     }
     
 }
